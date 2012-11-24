@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">International Code of Signals</string>
+	<string name="show">Show</string>
+	<string name="insert">Insert text to spell</string>
+	<string name="flag">Show Flag</string>
+	<string name="text">Show Text</string>
+	<string name="speak">Speak</string>
+	<string name="speed">Speed</string>
+	<string name="touch">Touch to advance</string>
+	<string name="about">About ICS…</string>
+	<string name="aboutt">ICS is an Android application to spell in the ICAO/NATO/Navy alphabet\nCopyright© 2011\nMatteo Croce &lt;rootkit85@yahoo.it&gt;</string>
+</resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+
+		<com.google.ads.AdView
+			android:id="@+id/adView"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			ads:adUnitId="a14ca26aa307e73"
+			ads:adSize="SMART_BANNER"
+			ads:loadAdOnCreate="true"/>
+
+		<CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/showflag" android:text="@string/flag" android:checked="true"/>
+		<CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/showtext" android:text="@string/text" android:checked="true"/>
+		<CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/speak" android:text="@string/speak" android:checked="true"/>
+
+		<CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/touch" android:id="@+id/touch"/>
+		<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/speed"/>
+		<SeekBar android:layout_height="wrap_content" android:id="@+id/speed" android:layout_width="fill_parent" android:progress="5" android:max="10"/>
+
+		<EditText android:id="@+id/text" android:layout_width="fill_parent" android:inputType="textCapCharacters" android:layout_height="wrap_content" android:hint="@string/insert" />
+		<Button android:layout_height="wrap_content" android:text="@string/show" android:layout_width="fill_parent" android:id="@+id/show"/>
+	</LinearLayout>
+</ScrollView>
