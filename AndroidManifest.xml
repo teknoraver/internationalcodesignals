@@ -8,7 +8,7 @@
 		android:largeScreens="true"
 		android:anyDensity="true"
 		android:xlargeScreens="true"/>
-	<uses-sdk android:minSdkVersion="9" android:targetSdkVersion="19"/>
+	<uses-sdk android:minSdkVersion="10" android:targetSdkVersion="21"/>
 	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     	<application
