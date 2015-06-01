@@ -1,5 +1,6 @@
 package net.teknoraver.ics;
 
+import java.util.HashMap;
 import java.util.Locale;
 
 import android.app.Activity;
@@ -46,6 +47,7 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 	private String string;
 	private Handler handler;
 	private int speed;
+	private HashMap<String, String> params = new HashMap<String, String>();
 	boolean showflag;
 	boolean showtext;
 
@@ -79,6 +81,7 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 		speed = getIntent().getIntExtra(speedcmd, 5);
 
 		handler = new Handler();
+		params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "id");
 
 		if(speed < 0) {
 			handler.post(Updater);
@@ -139,7 +142,7 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 				String letter = codes[c - '0'];
 				if(c >= '1' && c <= '3' || c == '6')
 					letter = new String(new char[]{c});
-				tts.speak(letter, 0, null);
+				tts.speak(letter, 0, params);
 			}
 		}
 		code.setText(text);
@@ -154,7 +157,8 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 				handler.post(Updater);
 				Thread.sleep(speed * 100);
 				handler.post(Updater);
-				Thread.sleep(speed * 10);
+				while(tts.isSpeaking())
+					Thread.sleep(speed * 10);
 			}
 		} catch (final InterruptedException e) {
 			e.printStackTrace();
