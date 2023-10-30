@@ -66,21 +66,22 @@ public class Main extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(final View view) {
-		if(view.getId() == R.id.show) {
-			if(!sf.isChecked() && !st.isChecked() && !sp.isChecked())
+		if (view.getId() == R.id.show) {
+			if (!sf.isChecked() && !st.isChecked() && !sp.isChecked())
 				return;
 
 			int showspeed = -1;
-			if(!touch.isChecked())
+			if (!touch.isChecked())
 				showspeed = 15 - speed.getProgress();
 
 			startActivity(new Intent(this, ICS.class)
-				.putExtra(ICS.stringcmd, (" " + et.getText()).toUpperCase() + " ")
-				.putExtra(ICS.flagcmd, sf.isChecked())
-				.putExtra(ICS.textcmd, st.isChecked())
-				.putExtra(ICS.speakcmd, sp.isChecked())
-				.putExtra(ICS.speedcmd, showspeed));
-		} if(view.getId() == R.id.touch)
+								  .putExtra(ICS.stringcmd, (" " + et.getText()).toUpperCase() + " ")
+								  .putExtra(ICS.flagcmd, sf.isChecked())
+								  .putExtra(ICS.textcmd, st.isChecked())
+								  .putExtra(ICS.speakcmd, sp.isChecked())
+								  .putExtra(ICS.speedcmd, showspeed));
+		}
+		if (view.getId() == R.id.touch)
 			speed.setEnabled(!touch.isChecked());
 	}
 
@@ -93,12 +94,12 @@ public class Main extends Activity implements OnClickListener {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 //		if(item.getItemId() == R.id.about) {
-			new AlertDialog.Builder(this)
+		new AlertDialog.Builder(this)
 				.setTitle(R.string.about)
 				.setMessage(R.string.aboutt)
 				.setIcon(android.R.drawable.ic_dialog_info)
 				.show();
-			return true;
+		return true;
 //		}
 //		return false;
 	}
