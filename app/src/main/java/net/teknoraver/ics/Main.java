@@ -1,8 +1,5 @@
 package net.teknoraver.ics;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -48,9 +45,6 @@ public class Main extends Activity implements OnClickListener {
 		speed.setProgress(pref.getInt(speedv, 5));
 		speed.setEnabled(!ttabool);
 		et.setText(pref.getString(txt, ""));
-
-		AdView adView = (AdView)findViewById(R.id.adView);
-		adView.loadAd(new AdRequest.Builder().build());
 
 		findViewById(R.id.show).setOnClickListener(this);
 	}
