@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +25,7 @@ public class Main extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.input);
 
-		pref = PreferenceManager.getDefaultSharedPreferences(this);
+		pref = getSharedPreferences("general", MODE_PRIVATE);
 
 		et = findViewById(R.id.text);
 		sf = findViewById(R.id.showflag);
