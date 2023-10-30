@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ICS extends Activity implements Runnable, OnInitListener, OnTouchListener {
-	private final int flagsId[] = new int[] {
+	private final int[] flagsId = new int[] {
 			R.drawable.n0, R.drawable.n1, R.drawable.n2, R.drawable.n3, R.drawable.n4, R.drawable.n5, R.drawable.n6, R.drawable.n7,
 			R.drawable.n8, R.drawable.n9, 0, 0, 0, 0, 0, 0, 0,
 			R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e, R.drawable.f, R.drawable.g, R.drawable.h,
@@ -26,7 +26,7 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 			R.drawable.q, R.drawable.r, R.drawable.s, R.drawable.t, R.drawable.u, R.drawable.v, R.drawable.w, R.drawable.x,
 			R.drawable.y, R.drawable.z
 	};
-	private final String codes[] = new String[] {
+	private final String[] codes = new String[] {
 			"ZERO", "ONE", "TWO", "THREE", "FOWER", "FIFE", "SIX", "SEVEN",
 			"EIGHT", "NINER", null, null, null, null, null, null, null,
 			"ALPHA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT", "GOLF", "HOTEL",
@@ -47,7 +47,7 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 	private String string;
 	private Handler handler;
 	private int speed;
-	private HashMap<String, String> params = new HashMap<String, String>();
+	private final HashMap<String, String> params = new HashMap<>();
 	boolean showflag;
 	boolean showtext;
 
@@ -68,8 +68,8 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.show);
 
-		final LinearLayout ll = (LinearLayout)findViewById(R.id.showlayout);
-		code = (TextView)findViewById(R.id.code);
+		final LinearLayout ll = findViewById(R.id.showlayout);
+		code = findViewById(R.id.code);
 
 		showflag = getIntent().getBooleanExtra(flagcmd, true);
 		showtext = getIntent().getBooleanExtra(textcmd, true);
@@ -141,7 +141,7 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 			if(tts != null) {
 				String letter = codes[c - '0'];
 				if(c >= '1' && c <= '3' || c == '6')
-					letter = new String(new char[]{c});
+					letter = String.valueOf(c);
 				tts.speak(letter, 0, params);
 			}
 		}
@@ -155,10 +155,10 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 		try {
 			while(pos < string.length() && !isFinishing()) {
 				handler.post(Updater);
-				Thread.sleep(speed * 100);
+				Thread.sleep(speed * 100L);
 				handler.post(Updater);
 				while(tts.isSpeaking())
-					Thread.sleep(speed * 10);
+					Thread.sleep(speed * 10L);
 			}
 		} catch (final InterruptedException e) {
 			e.printStackTrace();
@@ -171,7 +171,7 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 	public void onInit(final int status) {
 		tts.setLanguage(Locale.ENGLISH);
 		if(speed >= 0)
-			tts.setSpeechRate(speed / 10);
+			tts.setSpeechRate(speed / 10f);
 	}
 
 	@Override

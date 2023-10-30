@@ -28,12 +28,12 @@ public class Main extends Activity implements OnClickListener {
 
 		pref = PreferenceManager.getDefaultSharedPreferences(this);
 
-		et = (EditText)findViewById(R.id.text);
-		sf = (CheckBox)findViewById(R.id.showflag);
-		st = (CheckBox)findViewById(R.id.showtext);
-		sp = (CheckBox)findViewById(R.id.speak);
-		touch = (CheckBox)findViewById(R.id.touch);
-		speed = (SeekBar)findViewById(R.id.speed);
+		et = findViewById(R.id.text);
+		sf = findViewById(R.id.showflag);
+		st = findViewById(R.id.showtext);
+		sp = findViewById(R.id.speak);
+		touch = findViewById(R.id.touch);
+		speed = findViewById(R.id.speed);
 
 		touch.setOnClickListener(this);
 
@@ -61,7 +61,7 @@ public class Main extends Activity implements OnClickListener {
 		editor.putInt(speedv, speed.getProgress());
 		editor.putString(txt, et.getText().toString());
 
-		editor.commit();
+		editor.apply();
 	}
 
 	@Override
