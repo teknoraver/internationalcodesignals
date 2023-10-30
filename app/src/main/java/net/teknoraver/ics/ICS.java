@@ -73,8 +73,7 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 
 		showflag = getIntent().getBooleanExtra(flagcmd, true);
 		showtext = getIntent().getBooleanExtra(textcmd, true);
-		if (getIntent().getBooleanExtra(speakcmd, true))
-			tts = new TextToSpeech(this, this);
+		tts = new TextToSpeech(this, this);
 		string = getIntent().getStringExtra(stringcmd);
 
 		pos = 0;
