@@ -1,8 +1,5 @@
 package net.teknoraver.ics;
 
-import java.util.HashMap;
-import java.util.Locale;
-
 import android.app.Activity;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
@@ -16,6 +13,8 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 public class ICS extends Activity implements Runnable, OnInitListener, OnTouchListener {
 	private final int[] flagsId = new int[] {
@@ -47,7 +46,7 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 	private String string;
 	private Handler handler;
 	private int speed;
-	private final HashMap<String, String> params = new HashMap<>();
+	private final Bundle params = new Bundle();
 	boolean showflag;
 	boolean showtext;
 
@@ -81,7 +80,6 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 		speed = getIntent().getIntExtra(speedcmd, 5);
 
 		handler = new Handler();
-		params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "id");
 
 		if(speed < 0) {
 			handler.post(Updater);
@@ -142,7 +140,7 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 				String letter = codes[c - '0'];
 				if(c >= '1' && c <= '3' || c == '6')
 					letter = String.valueOf(c);
-				tts.speak(letter, 0, params);
+				tts.speak(letter, TextToSpeech.QUEUE_FLUSH, params, letter);
 			}
 		}
 		code.setText(text);
@@ -176,14 +174,14 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 
 	@Override
 	public boolean onTouch(final View v, final MotionEvent event) {
-		if(event.getAction() == MotionEvent.ACTION_DOWN) {
+		if(event.getAction() == MotionEvent.ACTION_UP) {
 			if(pos == string.length() - 1) {
 				finish();
-				return false;
+				return true;
 			}
 			handler.post(Updater);
 			handler.post(Updater);
 		}
-		return false;
+		return true;
 	}
 }
