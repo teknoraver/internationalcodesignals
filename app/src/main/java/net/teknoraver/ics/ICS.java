@@ -148,6 +148,7 @@ public class ICS extends Activity implements Runnable, OnInitListener, OnTouchLi
 		code.setCompoundDrawables(null, flag, null, null);
 	}
 
+	/** @noinspection BusyWait*/
 	@Override
 	public void run() {
 		pos = 0;

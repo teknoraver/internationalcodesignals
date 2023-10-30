@@ -92,14 +92,14 @@ public class Main extends Activity implements OnClickListener {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-//		if(item.getItemId() == R.id.about) {
-		new AlertDialog.Builder(this)
-				.setTitle(R.string.about)
-				.setMessage(R.string.aboutt)
-				.setIcon(android.R.drawable.ic_dialog_info)
-				.show();
-		return true;
-//		}
-//		return false;
+		if (item.getItemId() == R.id.about) {
+			new AlertDialog.Builder(this)
+					.setTitle(R.string.about)
+					.setMessage(R.string.aboutt)
+					.setIcon(android.R.drawable.ic_dialog_info)
+					.show();
+			return true;
+		}
+		return false;
 	}
 }

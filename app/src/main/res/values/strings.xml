@@ -9,5 +9,5 @@
 	<string name="speed">Speed</string>
 	<string name="touch">Touch to advance</string>
 	<string name="about">About ICS…</string>
-	<string name="aboutt">ICS is an Android application to spell in the ICAO/NATO/Navy alphabet\nCopyright© 2011\nMatteo Croce &lt;rootkit85@yahoo.it&gt;</string>
+	<string name="aboutt">ICS is an Android application to spell in the ICAO/NATO/Navy alphabet\nCopyright© 2011-2023\nMatteo Croce &lt;rootkit85@yahoo.it&gt;</string>
 </resources>
