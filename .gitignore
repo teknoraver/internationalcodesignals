@@ -1,5 +1,6 @@
 .gradle
 /local.properties
+/keystore.properties
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
@@ -7,3 +8,4 @@
 *.apk
 -e *.iml
 /.idea/
+*.hprof
