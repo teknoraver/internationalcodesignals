@@ -20,8 +20,8 @@ android {
         applicationId = "net.teknoraver.ics"
         minSdk = 21
         targetSdk = 37
-        versionCode = 21
-        versionName = "1.7"
+        versionCode = 24
+        versionName = "1.7.3"
     }
     signingConfigs {
         if (hasKeystore) {
